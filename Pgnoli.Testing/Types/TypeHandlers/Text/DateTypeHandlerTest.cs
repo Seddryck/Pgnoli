@@ -73,7 +73,6 @@ namespace Pgnoli.Testing.Types.TypeHandlers.Text
             Assert.That(result, Is.EqualTo(DateOnly.FromDateTime(expected)));
         }
 
-
         [Test]
         [TestCase("48-49-45-48-49-45-50-48-48-48", "2000-01-01")]
         [TestCase("49-50-45-50-56-45-49-57-55-56", "1978-12-28")]

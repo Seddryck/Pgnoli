@@ -45,7 +45,7 @@ namespace Pgnoli.Types.TypeHandlers.Binary
                 int x => (Z)Convert.ChangeType(BinaryPrimitives.ReverseEndianness(x), typeof(Z)),
                 long x => (Z)Convert.ChangeType(BinaryPrimitives.ReverseEndianness(x), typeof(Z)),
                 _ => throw new ArgumentOutOfRangeException(nameof(value))
-            }; ;
+            };
         }
     }
 }

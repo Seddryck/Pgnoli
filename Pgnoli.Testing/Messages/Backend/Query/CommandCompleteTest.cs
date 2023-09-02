@@ -62,7 +62,6 @@ namespace Pgnoli.Testing.Messages.Backend.Query
             });
         }
 
-
         [Test]
         public void Write_SelectRowCount_Success()
         {

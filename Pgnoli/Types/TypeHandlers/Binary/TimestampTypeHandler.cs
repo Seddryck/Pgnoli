@@ -25,6 +25,5 @@ namespace Pgnoli.Types.TypeHandlers.Binary
             var value = ReadUnderlyingValue(ref buffer);
             return Postgres_Epoch_Date.AddTicks(value * 10);
         }
-
     }
 }

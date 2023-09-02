@@ -38,7 +38,5 @@ namespace Pgnoli.Testing.Messages.Backend
             var msg = parser.Parse(bytes);
             Assert.That(msg, Is.TypeOf(expected));
         }
-
-
     }
 }

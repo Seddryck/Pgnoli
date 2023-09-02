@@ -74,7 +74,6 @@ namespace Pgnoli.Types.TypeHandlers.Binary
                 var subStr = str.Substring(i, Math.Min(chunkSize, str.Length - i));
                 yield return subStr;
             }
-
         }
     }
 }

@@ -27,6 +27,5 @@ namespace Pgnoli.Types.TypeHandlers.Binary
 
             return ReadUnderlyingValue<T>(ref buffer);
         }
-
     }
 }
