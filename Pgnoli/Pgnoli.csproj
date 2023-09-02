@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <ApplicationIcon>Pgnoli-256.ico</ApplicationIcon>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="Pgnoli-256.ico" />
+	</ItemGroup>
+</Project>

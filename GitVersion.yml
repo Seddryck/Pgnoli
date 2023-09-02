@@ -1,0 +1,15 @@
+mode: Mainline
+branches:
+  feature:
+    tag: beta.{BranchName}
+    regex: features?[/-]
+    source-branches:
+    - main
+    - feature
+  main:
+    regex: ^main$
+    is-mainline: true
+    increment: Patch
+ignore:
+  sha: []
+merge-message-formats: {}

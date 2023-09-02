@@ -1,0 +1,10 @@
+﻿69		E (Execute)
+0
+0
+0
+9		9 = Length
+0		0 = Unnamed portal
+0
+0
+0
+0		0 = Unlimited

@@ -1,0 +1,31 @@
+﻿84		T	RowDescription
+0
+0
+0
+30		30 is the length of the message itself (without the code)
+0
+1		1	field
+118		v
+97		a
+108		l
+117		u
+101		e
+0		Terminator
+0
+0
+0
+0		object ID of the table
+0
+0		column of a specific table
+0
+0
+0
+23		Integer = 23
+0
+4		Integer = 4 bytes
+0
+0
+0
+0		Modifier
+0
+1		Binary

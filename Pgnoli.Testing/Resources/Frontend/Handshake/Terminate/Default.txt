@@ -1,0 +1,5 @@
+﻿88			X (Terminate)
+0
+0
+0				
+4				Length of message
