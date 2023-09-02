@@ -13,7 +13,6 @@ namespace Pgnoli.Testing.Messages.Backend.Query
         public void Write_Default_Success()
         {
             var msg = ParseComplete.Message.Build();
-            msg.Write();
             var bytes = msg.GetBytes();
 
             var reader = new ResourceBytesReader();
