@@ -44,7 +44,7 @@ namespace Pgnoli.Testing.Messages
         {
             var bytes = new Byte[] { (byte)(Convert.ToByte(StubMessage.Code)-1), 0, 0, 0, 4 };
             var msg = new StubMessage(bytes);
-            Assert.Throws<MessageUnexpectedCodeException>(() => msg.Read());
+            Assert.Throws<MessageMismatchCodeException>(() => msg.Read());
         }
 
         [Test]
@@ -61,6 +61,16 @@ namespace Pgnoli.Testing.Messages
             var bytes = new Byte[] { Convert.ToByte(StubMessage.Code), 0, 0, 0, 5, 1 };
             var msg = new StubBrokenMessage(bytes);
             Assert.Throws<MessageNotFullyConsumedException>(() => msg.Read());
+        }
+
+
+        [Test]
+        public void Read_TooLongBuffer_TrimmedDoesNotThrow()
+        {
+            var bytes = new Byte[] { Convert.ToByte(StubMessage.Code), 0, 0, 0, 4, 1, 0, 10 };
+            var msg = new StubMessage(bytes);
+            Assert.DoesNotThrow(() => msg.Read());
+            Assert.That(msg.GetBytes(), Is.EqualTo(bytes[..(bytes[4]+1)]));
         }
 
         [Test]

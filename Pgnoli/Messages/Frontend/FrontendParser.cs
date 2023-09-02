@@ -31,7 +31,7 @@ namespace Pgnoli.Messages.Frontend
                 Query.Sync.Code                 => new Query.Sync(bytes),
                 Query.Query.Code                => new Query.Query(bytes),
                 Handshake.Terminate.Code        => new Handshake.Terminate(bytes),
-                _ => throw new UnexpectedMessageCodeException(code, bytes),
+                _ => throw new MessageUnexpectedCodeException(code, bytes),
             };
         }
     }

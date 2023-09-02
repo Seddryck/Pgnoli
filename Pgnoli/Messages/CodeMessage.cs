@@ -30,7 +30,7 @@ namespace Pgnoli.Messages
         {
             var code = buffer.ReadAsciiChar();
             if (code != MessageType)
-                throw new MessageUnexpectedCodeException(this.GetType(), MessageType, code);
+                throw new MessageMismatchCodeException(this.GetType(), MessageType, code);
         }
 
         protected internal override int PrefixLength => 1;

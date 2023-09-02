@@ -12,7 +12,7 @@ namespace Pgnoli.Testing.Messages.Frontend.Query
         [Test]
         public void Write_UnnamedPortal_Success()
         {
-            var msg = Describe.Portal.Build();
+            var msg = Describe.UnnamedPortal.Build();
             var bytes = msg.GetBytes();
 
             var reader = new ResourceBytesReader();
@@ -27,25 +27,36 @@ namespace Pgnoli.Testing.Messages.Frontend.Query
             var msg = new Describe(bytes);
 
             Assert.DoesNotThrow(() => msg.Read());
+            Assert.That(msg.Payload.Name, Is.EqualTo(string.Empty));
+            Assert.That(msg.Payload.PortalType, Is.EqualTo(PortalType.Portal));
         }
 
-        [Test]
-        public void Roundtrip_NamedPortal_Success()
-        {
-            var msg = Describe.Portal.Named("myName").Build();
-            Assert.Multiple(() =>
+        private static Describe.DescribeBuilder[] BuilderCases
+            => new[]
             {
-                Assert.That(msg.Payload.PortalType, Is.EqualTo(PortalType.Portal));
-                Assert.That(msg.Payload.Name, Is.EqualTo("myName"));
-            });
+                Describe.Portal("the_name"),
+                Describe.PreparedStatement("the_name"),
+                Describe.UnnamedPortal,
+                Describe.UnnamedPreparedStatement
+            };
+
+        [Test]
+        [TestCaseSource(nameof(BuilderCases))]
+        public void Roundtrip_Close_Success(Describe.DescribeBuilder builder)
+        {
+            var msg = builder.Build();
+
             var bytes = msg.GetBytes();
+            Assert.That(bytes, Is.Not.Null);
+            Assert.That(bytes, Has.Length.GreaterThan(0));
+            Assert.That(bytes[0], Is.EqualTo('D'));
 
             var roundtrip = new Describe(bytes);
             Assert.DoesNotThrow(() => roundtrip.Read());
             Assert.Multiple(() =>
             {
-                Assert.That(msg.Payload.PortalType, Is.EqualTo(roundtrip.Payload.PortalType));
                 Assert.That(msg.Payload.Name, Is.EqualTo(roundtrip.Payload.Name));
+                Assert.That(msg.Payload.PortalType, Is.EqualTo(roundtrip.Payload.PortalType));
             });
         }
     }

@@ -12,10 +12,16 @@ namespace Pgnoli.Messages
             : base(message) { }
     }
 
+    public class MessageMismatchCodeException : MessageException
+    {
+        public MessageMismatchCodeException(Type MessageType, char expected, char actual)
+            : base($"When reading a message of type '{MessageType.GetType().Name}', the expected code is '{expected}' but the code is '{actual}'.") { }
+    }
+
     public class MessageUnexpectedCodeException : MessageException
     {
-        public MessageUnexpectedCodeException(Type MessageType, char expected, char actual)
-            : base($"When reading a message of type '{MessageType.GetType().Name}', the expected code is '{expected}' but the code is '{actual}'.") { }
+        public MessageUnexpectedCodeException(char code, byte[] bytes)
+            : base($"A message with code '{code}' was decoded but this code can't be associated to a type of message. The content of the message was '{bytes}'") { }
     }
 
     public class MessageUnexpectedLengthException : MessageException
