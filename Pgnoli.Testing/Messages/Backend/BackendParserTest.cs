@@ -26,6 +26,7 @@ namespace Pgnoli.Testing.Messages.Backend
         [TestCase("Backend.Query.CloseComplete.Default", typeof(CloseComplete))]
         [TestCase("Backend.Query.CommandComplete.SelectRowCount", typeof(CommandComplete))]
         [TestCase("Backend.Query.DataRow.SingleInt", typeof(DataRow))]
+        [TestCase("Backend.Query.ErrorResponse.Default", typeof(ErrorResponse))]
         [TestCase("Backend.Query.ParseComplete.Default", typeof(ParseComplete))]
         [TestCase("Backend.Query.RowDescription.SingleInt", typeof(RowDescription))]
         public void Parse(string msgPath, Type expected) 

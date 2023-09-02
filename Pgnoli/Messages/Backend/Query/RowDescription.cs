@@ -69,6 +69,9 @@ namespace Pgnoli.Messages.Backend.Query
             public RowDescriptionPayload Payload { get; private set; } = new();
             private FieldDescriptionFactory Factory { get; set; } = new();
 
+            internal RowDescriptionBuilder()
+                => (Payload, Factory) = (new(), new());
+
             public RowDescriptionBuilder With(FieldDescription field)
             {
                 Payload.Fields.Add(field);

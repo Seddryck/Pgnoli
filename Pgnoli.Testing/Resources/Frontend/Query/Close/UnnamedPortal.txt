@@ -1,0 +1,7 @@
+﻿67		C (Close)
+0
+0
+0
+6		6 = length
+80		P => Portal
+0		unnamed portal 

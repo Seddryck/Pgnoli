@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Pgnoli.Messages
 {
-    internal enum ErrorSeverity
+    public enum ErrorSeverity
     {
         Error,
         Fatal,
         Panic,
+        Warning,
+        Notice,
+        Debug,
+        Info,
+        Log
     }
 }

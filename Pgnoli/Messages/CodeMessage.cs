@@ -26,26 +26,13 @@ namespace Pgnoli.Messages
             return Buffer.GetBytes();
         }
 
-        public override int Read()
+        protected internal override void ReadPrefix(Buffer buffer)
         {
-            if (Buffer is null)
-                throw new ArgumentNullException(nameof(Buffer));
-
-            Buffer.Reset();
-            if (Buffer.ReadAsciiChar() != MessageType)
-                throw new ArgumentOutOfRangeException(nameof(MessageType));
-
-            Length = Buffer.ReadInt();
-            if (Buffer.Length < Length + 1)
-                throw new ArgumentOutOfRangeException(nameof(MessageType));
-            else if (Buffer.Length > Length + 1)
-                Buffer.TrimEnd(Length + 1);
-
-            ReadPayload(Buffer);
-
-            if (!Buffer.IsEnd())
-                throw new ArgumentException(nameof(Buffer));
-            return Length + 1;
+            var code = buffer.ReadAsciiChar();
+            if (code != MessageType)
+                throw new MessageUnexpectedCodeException(this.GetType(), MessageType, code);
         }
+
+        protected internal override int PrefixLength => 1;
     }
 }

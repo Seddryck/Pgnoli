@@ -9,16 +9,29 @@ namespace Pgnoli.Testing.Messages.Backend.Query
 {
     public class CommandCompleteTest
     {
+        private static CommandComplete.CommandCompleteBuilder[] BuilderCases
+            => new[]
+            {
+                CommandComplete.Select(1978),
+                CommandComplete.Delete(1978),
+                CommandComplete.Merge(1978),
+                CommandComplete.Move(1978),
+                CommandComplete.Update(1978),
+                CommandComplete.Fetch(1978),
+                CommandComplete.Copy(1978),
+            };
+
         [Test]
-        public void Roundtrip_SelectRowCount_Success()
+        [TestCaseSource(nameof(BuilderCases))]
+        public void Roundtrip_SelectRowCount_Success(CommandComplete.CommandCompleteBuilder builder)
         {
-            var msg = CommandComplete.Select(1978).Build();
+            var msg = builder.Build();
             Assert.That(msg.Payload.RowCount, Is.EqualTo(1978));
 
             var bytes = msg.GetBytes();
             Assert.That(bytes, Is.Not.Null);
             Assert.That(bytes, Has.Length.GreaterThan(0));
-            Assert.That(bytes[0], Is.GreaterThanOrEqualTo('A').And.LessThanOrEqualTo('Z'));
+            Assert.That(bytes[0], Is.EqualTo('C'));
 
             var roundtrip = new CommandComplete(bytes);
             Assert.DoesNotThrow(() => roundtrip.Read());

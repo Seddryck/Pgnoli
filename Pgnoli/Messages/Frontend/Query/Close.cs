@@ -24,7 +24,7 @@ namespace Pgnoli.Messages.Frontend.Query
             : base(Code) { Payload = payload; }
 
         protected override int GetPayloadLength()
-            => Payload.Name.Length + 4;
+            => 1 + Payload.Name.Length + 1;
 
         protected internal override void WritePayload(Buffer buffer)
         {
@@ -35,12 +35,14 @@ namespace Pgnoli.Messages.Frontend.Query
         protected internal override void ReadPayload(Buffer buffer)
         {
             var portalType = buffer.ReadAsciiChar() == 'S' ? PortalType.PreparedStatement : PortalType.Portal;
-            var name = buffer.ReadFixedSizeString(buffer.Length - 6);
+            var name = buffer.ReadStringUntilNullTerminator();
             Payload = new ClosePayload(portalType, name);
         }
 
         public static CloseBuilder PreparedStatement(string name) => new(PortalType.PreparedStatement, name);
+        public static CloseBuilder UnnamedPreparedStatement => new(PortalType.PreparedStatement, string.Empty);
         public static CloseBuilder Portal(string name) => new(PortalType.Portal, name);
+        public static CloseBuilder UnnamedPortal => new(PortalType.Portal, string.Empty);
 
         public record struct ClosePayload(PortalType PortalType, string Name)
         { }

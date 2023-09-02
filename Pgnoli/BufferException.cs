@@ -31,6 +31,12 @@ namespace Pgnoli
             : base($"The operation tries to read or write after the end of the buffer. The buffer has a total length of '{size}' and is positionned at the index '{position}' but the code was trying to read or write '{bytesCount}' bytes.") { }
     }
 
+    public class BufferEmptyException : BufferPgnoliException
+    {
+        public BufferEmptyException()
+            : base($"The operation tries to read a buffer but this buffer is empty (length equal to 0).") { }
+    }
+
     public class BufferUnexpectedCharException : BufferPgnoliException
     {
         public BufferUnexpectedCharException(char unexpectedChar)

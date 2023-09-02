@@ -18,7 +18,7 @@ namespace Pgnoli.Messages.Frontend.Query
             : base(Code) { Payload = payload; }
 
         protected override int GetPayloadLength()
-            => Payload.Sql.Length;
+            => Payload.Sql.Length + 1;
 
         protected internal override void WritePayload(Buffer buffer)
         {
