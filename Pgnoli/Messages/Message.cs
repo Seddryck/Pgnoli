@@ -36,9 +36,6 @@ namespace Pgnoli.Messages
 
         public virtual int Read()
         {
-            if (Buffer is null)
-                throw new BufferNotAllocatedException();
-
             if (Buffer.Length == 0)
                 throw new BufferEmptyException();
 
