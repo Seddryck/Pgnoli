@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Pgnoli.Messages.Backend.Query
 {
-    public class ParseComplete : CodeMessage
+    public sealed class ParseComplete : CodeMessage
     {
         public const char Code = '1';
 
-        protected internal ParseComplete(byte[] bytes)
+        internal ParseComplete(byte[] bytes)
             : base(Code, bytes) { }
 
-        protected internal ParseComplete()
+        internal ParseComplete()
             : base(Code) { }
 
         protected override int GetPayloadLength()

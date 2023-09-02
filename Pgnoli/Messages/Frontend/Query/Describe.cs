@@ -19,24 +19,26 @@ namespace Pgnoli.Messages.Frontend.Query
             : base(Code) { Payload = payload; }
 
         protected override int GetPayloadLength()
-            => Math.Max(Payload.Name?.Length ?? 0, 1) + 1;
+            => 1 + Payload.Name.Length + 1;
 
         protected internal override void WritePayload(Buffer buffer)
         {
             buffer.WriteAsciiChar(Payload.PortalType == PortalType.PreparedStatement ? 'S' : 'P');
-            buffer.WriteFixedSizeString(Payload.Name);
+            buffer.WriteAsciiStringNullTerminator(Payload.Name);
         }
 
         protected internal override void ReadPayload(Buffer buffer)
         {
             var portalType = buffer.ReadAsciiChar() == 'S' ? PortalType.PreparedStatement : PortalType.Portal;
-            var name = buffer.ReadFixedSizeString(buffer.Length - 6);
+            var name = buffer.ReadStringUntilNullTerminator();
             Payload = new DescribePayload(portalType, name);
         }
 
 
-        public static DescribeBuilder PreparedStatement => new(PortalType.PreparedStatement);
-        public static DescribeBuilder Portal => new(PortalType.Portal);
+        public static DescribeBuilder UnnamedPreparedStatement => new(PortalType.PreparedStatement, string.Empty);
+        public static DescribeBuilder UnnamedPortal => new(PortalType.Portal, string.Empty);
+        public static DescribeBuilder PreparedStatement(string name) => new(PortalType.PreparedStatement, name);
+        public static DescribeBuilder Portal(string name) => new(PortalType.Portal, name);
 
         public record struct DescribePayload(PortalType PortalType, string Name)
         { }
@@ -45,15 +47,9 @@ namespace Pgnoli.Messages.Frontend.Query
         {
             private DescribePayload Payload { get; set; }
 
-            public DescribeBuilder(PortalType value)
+            internal DescribeBuilder(PortalType value, string name)
             {
-                Payload = new DescribePayload(value, string.Empty);
-            }
-
-            public DescribeBuilder Named(string name)
-            {
-                Payload = Payload with { Name = name };
-                return this;
+                Payload = new DescribePayload(value, name);
             }
 
             public Describe Build()

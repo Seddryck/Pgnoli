@@ -91,7 +91,7 @@ namespace Pgnoli
                 int x => (T)Convert.ChangeType(BinaryPrimitives.ReverseEndianness(x), typeof(T)),
                 long x => (T)Convert.ChangeType(BinaryPrimitives.ReverseEndianness(x), typeof(T)),
                 _ => throw new ArgumentOutOfRangeException(nameof(value))
-            }; ;
+            };
         }
 
         public byte ReadByte()

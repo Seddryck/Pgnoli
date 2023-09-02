@@ -36,6 +36,7 @@ namespace Pgnoli.Messages.Backend
                 Query.CloseComplete.Code                => new Query.CloseComplete(bytes),
                 Query.CommandComplete.Code              => new Query.CommandComplete(bytes),
                 Query.DataRow.Code                      => new Query.DataRow(bytes, Context.FieldDescriptions, Context.TypeHandlerFactory),
+                Query.ErrorResponse.Code                => new Query.ErrorResponse(bytes),
                 Query.ParseComplete.Code                => new Query.ParseComplete(bytes),
                 Query.RowDescription.Code               => new Query.RowDescription(bytes),
                 _ => throw new ArgumentException(nameof(bytes)),

@@ -7,51 +7,51 @@ using Pgnoli.Messages.Frontend.Query;
 
 namespace Pgnoli.Testing.Messages.Frontend.Query
 {
-    public class DescribeTest
+    public class CloseTest
     {
         [Test]
-        public void Write_UnnamedPortal_Success()
+        public void Write_Default_Success()
         {
-            var msg = Describe.UnnamedPortal.Build();
+            var msg = Close.UnnamedPortal.Build();
             var bytes = msg.GetBytes();
 
             var reader = new ResourceBytesReader();
-            Assert.That(bytes, Is.EqualTo(reader.Read("Frontend.Query.Describe.UnnamedPortal")));
+            Assert.That(bytes, Is.EqualTo(reader.Read("Frontend.Query.Close.UnnamedPortal")));
         }
 
         [Test]
         public void Read_UnnamedPortal_Success()
         {
             var reader = new ResourceBytesReader();
-            var bytes = reader.Read("Frontend.Query.Describe.UnnamedPortal");
-            var msg = new Describe(bytes);
+            var bytes = reader.Read("Frontend.Query.Close.UnnamedPortal");
+            var msg = new Close(bytes);
 
             Assert.DoesNotThrow(() => msg.Read());
-            Assert.That(msg.Payload.Name, Is.EqualTo(string.Empty));
             Assert.That(msg.Payload.PortalType, Is.EqualTo(PortalType.Portal));
+            Assert.That(msg.Payload.Name, Is.EqualTo(string.Empty));
         }
 
-        private static Describe.DescribeBuilder[] BuilderCases
+        private static Close.CloseBuilder[] BuilderCases
             => new[]
             {
-                Describe.Portal("the_name"),
-                Describe.PreparedStatement("the_name"),
-                Describe.UnnamedPortal,
-                Describe.UnnamedPreparedStatement
+                Close.Portal("the_name"),
+                Close.PreparedStatement("the_name"),
+                Close.UnnamedPortal,
+                Close.UnnamedPreparedStatement
             };
 
         [Test]
         [TestCaseSource(nameof(BuilderCases))]
-        public void Roundtrip_Close_Success(Describe.DescribeBuilder builder)
+        public void Roundtrip_Close_Success(Close.CloseBuilder builder)
         {
             var msg = builder.Build();
 
             var bytes = msg.GetBytes();
             Assert.That(bytes, Is.Not.Null);
             Assert.That(bytes, Has.Length.GreaterThan(0));
-            Assert.That(bytes[0], Is.EqualTo('D'));
+            Assert.That(bytes[0], Is.EqualTo('C'));
 
-            var roundtrip = new Describe(bytes);
+            var roundtrip = new Close(bytes);
             Assert.DoesNotThrow(() => roundtrip.Read());
             Assert.Multiple(() =>
             {

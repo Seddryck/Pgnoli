@@ -22,7 +22,7 @@ namespace Pgnoli.Messages
             => (Buffer) = new Buffer();
 
         public byte[] GetBytes()
-            => Buffer?.GetBytes() ?? throw new ArgumentNullException(nameof(Buffer));
+            => Buffer.GetBytes();
 
         protected abstract int GetPayloadLength();
         internal virtual byte[] Write()
@@ -36,21 +36,27 @@ namespace Pgnoli.Messages
 
         public virtual int Read()
         {
-            if (Buffer is null)
-                throw new ArgumentNullException(nameof(Buffer));
+            if (Buffer.Length == 0)
+                throw new BufferEmptyException();
 
             Buffer.Reset();
 
+            ReadPrefix(Buffer);
+
             Length = Buffer.ReadInt();
-            if (Length < Buffer.Length)
-                Buffer.TrimEnd(Length);
+            if (Buffer.Length < Length + PrefixLength)
+                throw new MessageUnexpectedLengthException(this.GetType(), Buffer.Length, Length);
+            else if (Buffer.Length > Length + PrefixLength)
+                Buffer.TrimEnd(Length + PrefixLength);
 
             ReadPayload(Buffer);
 
             if (!Buffer.IsEnd())
-                throw new ArgumentException(nameof(Buffer));
-            return Length;
+                throw new MessageNotFullyConsumedException(this.GetType(), Buffer.Length - Buffer.Position);
+            return Length + PrefixLength;
         }
         protected internal abstract void ReadPayload(Buffer buffer);
+        protected internal virtual void ReadPrefix(Buffer buffer) { }
+        protected internal virtual int PrefixLength => 0;
     }
 }

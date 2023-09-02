@@ -28,13 +28,6 @@ namespace Pgnoli.Messages.Frontend.Query
                     + 2 + 2 * Payload.ResultsFormat.Length
                ;
 
-        private int GetFormatsLength(EncodingFormat[] formats)
-            => Payload.Parameters.All(x => x.EncodingFormat == EncodingFormat.Text)
-                ? 0
-                : Payload.Parameters.All(x => x.EncodingFormat == EncodingFormat.Binary)
-                    ? 1
-                    : Payload.Parameters.Count;
-
         private int GetFormatValue(EncodingFormat[] formats)
             => Payload.Parameters.All(x => x.EncodingFormat == EncodingFormat.Text)
                 ? 0
