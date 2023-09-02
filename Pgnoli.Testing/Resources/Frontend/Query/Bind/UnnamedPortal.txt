@@ -1,0 +1,15 @@
+﻿66		B (Bind)
+0
+0
+0
+14		14 = length
+0		unnamed portal (destination)
+0		unnamed portal (source)
+0
+0		0 = The number of parameter format codes
+0
+0		0 = The number of parameter values
+0
+1		1 = The length of the parameter value, here 1 equivalent to "all"
+0
+1		1 = Binary

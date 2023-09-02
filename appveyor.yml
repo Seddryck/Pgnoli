@@ -1,0 +1,52 @@
+version: build.{build}
+image: Visual Studio 2022
+
+skip_commits:
+  files:
+    - docs/
+    - misc/
+    - README.md
+    - LICENSE
+    - CODE_OF_CONDUCT.md
+    - CONTRIBUTING.md
+    - SECURITY.md
+
+init:
+- cmd: git config --global core.autocrlf true
+- cmd: setx IGNORE_NORMALISATION_GIT_HEAD_MOVE "1"
+- cmd: RefreshEnv.cmd
+- pwsh: Write-Output "Target branch is '$($env:APPVEYOR_REPO_BRANCH)'"
+
+before_build:
+- cmd: gitversion /output buildserver /verbosity Minimal
+- pwsh: Write-Output "Building Pgnoli version $($env:GitVersion_SemVer)"
+
+build_script:
+- dotnet build Pgnoli.sln -p:version="%GitVersion_SemVer%" -c Release /p:ContinuousIntegrationBuild=true --nologo
+
+test_script:
+- pwsh: |
+    $ErrorActionPreference = "Stop"
+    dotnet test Pgnoli.Testing -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Threshold=10 /p:ThresholdType=line /p:CoverletOutput=../.coverage/coverage.Pgnoli.xml --test-adapter-path:. --logger:Appveyor --no-build --nologo
+    if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }
+
+- pwsh: |
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -Outfile codecov.exe
+    .\codecov.exe --dir "./.coverage"
+
+after_test:
+- dotnet pack Pgnoli -p:version="%GitVersion_SemVer%" -c Release --include-symbols --no-build --nologo
+
+artifacts:
+- path: '**\*.nupkg'
+- path: '**\*.snupkg'
+
+deploy:
+- provider: NuGet
+  api_key:
+    secure: 11BE/qyqn1cnyYIOfJeTqtC7NoL2sN09x+OPmV6ywJ4DbVtExwNvxW5NyqKvIThP
+  skip_symbols: false
+  artifact: /.*(\.|\.s)nupkg/
+  on:
+    branch: main

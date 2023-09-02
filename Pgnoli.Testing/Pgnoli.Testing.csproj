@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+	  <None Remove="coverage.net6.0.opencover.xml" />
+	  <None Remove="coverage.net7.0.opencover.xml" />
+	  <None Remove="Resources\Backend\Query\CloseComplete\Default.txt" />
+	  <None Remove="Resources\Backend\Query\CommandComplete\SelectRowCount.txt" />
+	  <None Remove="Resources\Backend\Query\BindComplete\Default.txt" />
+	  <None Remove="Resources\Backend\Query\DataRow\SingleInt.txt" />
+	  <None Remove="Resources\Backend\Query\ParseComplete\Default.txt" />
+	  <None Remove="Resources\Backend\Handshake\ParameterStatus\ClientEncoding.txt" />
+	  <None Remove="Resources\Backend\Handshake\ReadyForQuery\Idle.txt" />
+	  <None Remove="Resources\Backend\Query\RowDescription\SingleInt.txt" />
+	  <None Remove="Resources\Frontend\Handshake\Terminate\Default.txt" />
+	  <None Remove="Resources\Frontend\Query\Bind\UnnamedPortal.txt" />
+	  <None Remove="Resources\Frontend\Query\Describe\UnnamedPortal.txt" />
+	  <None Remove="Resources\Frontend\Query\Execute\UnnamedPortal.txt" />
+	  <None Remove="Resources\Frontend\Query\Parse\To_timestamp.txt" />
+	  <None Remove="Resources\Frontend\Handshake\Startup\Default.txt" />
+	  <None Remove="Resources\Frontend\Query\Sync\Default.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Backend\Query\CloseComplete\Default.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Query\CommandComplete\SelectRowCount.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Query\BindComplete\Default.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Query\DataRow\SingleInt.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Query\ParseComplete\Default.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Handshake\ParameterStatus\ClientEncoding.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Handshake\ReadyForQuery\Idle.txt" />
+	  <EmbeddedResource Include="Resources\Backend\Query\RowDescription\SingleInt.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Handshake\Terminate\Default.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Query\Bind\UnnamedPortal.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Query\Describe\UnnamedPortal.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Query\Parse\To_timestamp.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Handshake\Startup\Default.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Query\Execute\UnnamedPortal.txt" />
+	  <EmbeddedResource Include="Resources\Frontend\Query\Sync\Default.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="coverlet.msbuild" Version="6.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.6.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Appveyor.TestLogger" Version="2.0.0" />
+		<PackageReference Include="Moq" Version="4.18.4" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);TestResults\**;coverage.*.json</DefaultItemExcludes>
+  </PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Pgnoli\Pgnoli.csproj" />
+	</ItemGroup>
+</Project>

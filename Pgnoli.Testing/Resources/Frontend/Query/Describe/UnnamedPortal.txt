@@ -1,0 +1,7 @@
+﻿68		D
+0		
+0		
+0		
+6		Length
+80		P as Portal
+0		No name
