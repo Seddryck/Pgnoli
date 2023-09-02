@@ -34,7 +34,7 @@ Postgresql wire protocol is actually a general purpose Layer-7 application proto
 [![Tests](https://img.shields.io/appveyor/tests/seddryck/Pgnoli.svg)](https://ci.appveyor.com/project/Seddryck/Pgnoli/build/tests)
 [![CodeFactor](https://www.codefactor.io/repository/github/seddryck/Pgnoli/badge)](https://www.codefactor.io/repository/github/seddryck/Pgnoli)
 [![codecov](https://codecov.io/github/Seddryck/Pgnoli/branch/main/graph/badge.svg?token=9ZSJ6N0X9E)](https://codecov.io/github/Seddryck/Pgnoli)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSeddryck%2FPgnoli.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSeddryck%2FPgnoli?ref=badge_shield)
+<!--[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSeddryck%2FPgnoli.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSeddryck%2FPgnoli?ref=badge_shield)-->
 
 **Status:** [![stars badge](https://img.shields.io/github/stars/Seddryck/Pgnoli.svg)](https://github.com/Seddryck/Pgnoli/stargazers)
 [![Bugs badge](https://img.shields.io/github/issues/Seddryck/Pgnoli/bug.svg?color=red&label=Bugs)](https://github.com/Seddryck/Pgnoli/issues?utf8=%E2%9C%93&q=is:issue+is:open+label:bug+)
