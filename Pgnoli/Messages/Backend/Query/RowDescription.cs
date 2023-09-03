@@ -10,7 +10,6 @@ namespace Pgnoli.Messages.Backend.Query
     public sealed class RowDescription : CodeMessage
     {
         public const char Code = 'T';
-        
 
         public RowDescriptionPayload Payload { get; private set; }
 
@@ -57,6 +56,8 @@ namespace Pgnoli.Messages.Backend.Query
                 Payload.Fields.Add(field);
             }
         }
+
+        public static RowDescriptionBuilder Message => new();
 
         public record struct RowDescriptionPayload(List<FieldDescription> Fields)
         {
