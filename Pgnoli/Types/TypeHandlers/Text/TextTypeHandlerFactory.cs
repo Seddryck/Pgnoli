@@ -26,8 +26,6 @@ namespace Pgnoli.Types.TypeHandlers.Text
                 TypeCode.Int16 => new ShortTypeHandler(),
                 TypeCode.Int32 => new IntTypeHandler(),
                 TypeCode.Int64 => new LongTypeHandler(),
-                TypeCode.UInt32 => new UnsignedIntTypeHandler(),
-                TypeCode.UInt64 => new UnsignedLongTypeHandler(),
                 TypeCode.Single => new SingleTypeHandler(),
                 TypeCode.Double => new DoubleTypeHandler(),
                 TypeCode.Decimal => new DecimalTypeHandler(),
