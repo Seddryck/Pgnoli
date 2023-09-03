@@ -12,7 +12,7 @@ namespace Pgnoli.Options.DateStyles
         public string DateSeparator => "-";
         public abstract string DateFormat { get; }
         public string TimestampFormat => $"{DateFormat} {TimeFormat}";
-        public string TimestampTzFormat => $"{DateFormat} {TimeFormat}+000";
+        public string TimestampTzFormat => $"{DateFormat} {TimeFormat}zz";
         public string TimeFormat => $"HH:mm:ss.ffffff";
     }
 }
