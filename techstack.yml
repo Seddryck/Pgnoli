@@ -1,7 +1,8 @@
 repo_name: Seddryck/Pgnoli
 report_id: 1cc7ff52ad8ed1ca8cf55c3b9dfbedcf
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-12T20:25:00+00:00'
+timestamp: '2024-01-05T08:48:08+00:00'
 requested_by: Seddryck
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -27,6 +29,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.Testing/Pgnoli.Testing.csproj
   detection_source: Pgnoli.Testing/Pgnoli.Testing.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -38,6 +41,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -47,6 +51,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/.github/workflows/combine-prs.yml
   detection_source: ".github/workflows/combine-prs.yml"
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -58,6 +63,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/1628/1434934.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.Testing/Pgnoli.Testing.csproj
   detection_source: Pgnoli.Testing/Pgnoli.Testing.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -69,6 +75,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.Testing/Pgnoli.Testing.csproj
   detection_source: Pgnoli.Testing/Pgnoli.Testing.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -80,6 +87,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.Testing/Pgnoli.Testing.csproj
   detection_source: Pgnoli.Testing/Pgnoli.Testing.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -92,6 +100,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.sln
   detection_source: Pgnoli.sln
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
@@ -106,7 +115,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13216/default_e23dabba1be2c69fbf5fc50bdc46cbffbe6ca2cb.png
-  detection_source_url: Pgnoli.Testing/Pgnoli.Testing.csproj
+  detection_source_url: https://github.com/Seddryck/Pgnoli/blob/main/Pgnoli.Testing/Pgnoli.Testing.csproj
   detection_source: Pgnoli.Testing/Pgnoli.Testing.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2023-09-02 16:07:22.000000000 Z
