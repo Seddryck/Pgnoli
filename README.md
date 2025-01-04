@@ -27,7 +27,7 @@ Postgresql wire protocol is actually a general purpose Layer-7 application proto
 [![licence badge](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://github.com/Seddryck/Pgnoli/blob/master/LICENSE)
 
 **Dev. activity:** [![GitHub last commit](https://img.shields.io/github/last-commit/Seddryck/Pgnoli.svg)](https://github.com/Seddryck/Pgnoli/commits)
-![Still maintained](https://img.shields.io/maintenance/yes/2023.svg)
+![Still maintained](https://img.shields.io/maintenance/yes/2025.svg)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Seddryck/Pgnoli)
 
 **Continuous integration builds:** [![Build status](https://ci.appveyor.com/api/projects/status/80321ajt5beih60f?svg=true)](https://ci.appveyor.com/project/Seddryck/Pgnoli/)
